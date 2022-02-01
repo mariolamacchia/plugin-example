@@ -43,7 +43,7 @@ function hubspot_admin() {
 		?>
 		<h1>Not Connected</h1>
 		<p>You are not connected to HubSpot. Please click the button below to connect.</p>
-		<script src="https://local.hsappstatic.net/signup-ui-lego-embedder/static/js/embedder.js"></script>
+		<script src="https://js.hubspot.com/signup-ui-lego-embedder/embedder.js"></script>
 		<button id="hubspot-connect-button" class="button button-primary">Connect to HubSpot</button>
 		<script>
 			const oauthRedirectUri = 'https://plugin-example.vercel.app/redirect.html'
