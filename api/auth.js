@@ -22,7 +22,6 @@ export default function auth(req, res) {
       res.json(auth);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).json(error);
     });
 }

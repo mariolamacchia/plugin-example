@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <h1>Connecting</h1>
+    <h1>Connecting...</h1>
     <script>
       const code = new URL(location.href).searchParams.get('code');
       fetch('/api/auth', {
@@ -18,6 +18,7 @@
         .then((response) => response.json())
         .then((body) => {
           window.opener.postMessage(body, '*');
+          window.close();
         });
     </script>
   </body>

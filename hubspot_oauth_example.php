@@ -20,12 +20,16 @@ add_action( 'admin_menu', function () {
 
 
 function hubspot_admin() {
-
-	$connected = get_option('hubspot_token');
+	$token = get_option('hubspot_token');
 	
-	if ($connected) {
+	if ($token) {
 		?>
-		<?php var_dump(get_option('hubspot_token')); ?>
+		<h1>Connected</h1>
+		<p>You are connected to HubSpot!</p>
+		<ul>
+			<li><b>Access Token:</b> <?php echo $token["accessToken"]; ?></li>
+			<li><b>Refresh Token:</b> <?php echo $token["refreshToken"]; ?></li>
+		</ul>
 		<button id="hubspot-disconnect-button" class="button button-primary">Disconnect</button>
 		<script>
 			document.getElementById('hubspot-disconnect-button').addEventListener('click', function() {
@@ -37,6 +41,8 @@ function hubspot_admin() {
 		<?php
 	} else {
 		?>
+		<h1>Not Connected</h1>
+		<p>You are not connected to HubSpot. Please click the button below to connect.</p>
 		<script src="https://local.hsappstatic.net/signup-ui-lego-embedder/static/js/embedder.js"></script>
 		<button id="hubspot-connect-button" class="button button-primary">Connect to HubSpot</button>
 		<script>
@@ -60,7 +66,7 @@ function hubspot_admin() {
 			window.addEventListener('message', (event) => {
 				if (
 					event.origin === new URL(oauthRedirectUri).origin &&
-					event.data.access_token
+					event.data.accessToken
 				) {
 					jQuery.post(
 						'<?php echo admin_url('admin-ajax.php?action=hubspot_connect'); ?>',
