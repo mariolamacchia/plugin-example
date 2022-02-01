@@ -14,6 +14,6 @@ export default function auth(req, res) {
       res.json(response.body);
     })
     .catch((error) => {
-      res.status(500).json(error.response);
+      res.status(500).json(error);
     });
 }
