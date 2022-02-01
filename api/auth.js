@@ -8,7 +8,13 @@ export default function auth(req, res) {
     redirect_uri: process.env.REDIRECT_URI,
     code: req.body.code,
   };
-  axios.post('https://api.hubapi.com/oauth/v1/token', body).then((response) => {
-    res.json(response.data);
-  });
+  axios
+    .post('https://api.hubapi.com/oauth/v1/token', body, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+    .then((response) => {
+      res.json(response.data);
+    });
 }
