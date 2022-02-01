@@ -1,23 +1,19 @@
-const axios = require('axios');
-const app = require('express')();
+const hubspot = require('@hubspot/api-client');
+
 export default function auth(req, res) {
-  const body = {
-    grant_type: 'authorization_code',
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
-    redirect_uri: process.env.REDIRECT_URI,
-    code: req.body.code,
-  };
-  axios
-    .post('https://api.hubapi.com/oauth/v1/token', body, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    })
+  const hubspotClient = new hubspot.Client();
+  return hubspotClient.oauth.defaultApi
+    .createToken(
+      'authorization_code',
+      req.query.code,
+      process.env.REDIRECT_URI,
+      process.env.CLIENT_ID,
+      process.env.CLIENT_SECRET
+    )
     .then((response) => {
-      res.json(response.data);
+      res.json(response.body);
     })
     .catch((error) => {
-      res.status(error.response.status).json(error.response.data);
+      res.status(500).json(error.response);
     });
 }
