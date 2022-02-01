@@ -15,7 +15,7 @@
           code,
         }),
       })
-        .then((response) => response.JSON())
+        .then((response) => response.json())
         .then((body) => {
           window.opener.postMessage(body, '*');
         });
