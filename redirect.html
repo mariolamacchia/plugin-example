@@ -9,13 +9,9 @@
     <h1>Connecting</h1>
     <script>
       const code = new URL(location.href).searchParams.get('code');
-      fetch('https://api.hubapi.com/oauth/v1/token', {
+      fetch('/api/auth', {
         method: 'POST',
         body: JSON.stringify({
-          grant_type: 'authorization_code',
-          client_id: 'a60088dd-351d-4b37-9313-33241070b93f',
-          client_secret: '1c2e60b1-63c5-43e8-948e-53dfaf55d3aa',
-          redirect_uri: 'https://plugin-example.vercel.app/',
           code,
         }),
       })
