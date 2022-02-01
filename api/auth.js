@@ -1,6 +1,6 @@
 const axios = require('axios');
 const app = require('express')();
-import axios from 'axios';
+const axios = require('axios');
 
 export default function auth(req, res) {
   const body = {
