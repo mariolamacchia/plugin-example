@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <h1>Connecting</h1>
+    <script>
+      const code = new URL(location.href).searchParams.get('code');
+      fetch('https://api.hubapi.com/oauth/v1/token', {
+        method: 'POST',
+        body: JSON.stringify({
+          grant_type: 'authorization_code',
+          client_id: 'a60088dd-351d-4b37-9313-33241070b93f',
+          client_secret: '1c2e60b1-63c5-43e8-948e-53dfaf55d3aa',
+          redirect_uri: 'https://3yzhw.csb.app/redirect.html',
+          code,
+        }),
+      })
+        .then((response) => response.JSON())
+        .then((body) => {
+          window.opener.postMessage(body, '*');
+        });
+    </script>
+  </body>
+</html>
