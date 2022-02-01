@@ -40,7 +40,7 @@ function hubspot_admin() {
 		<script src="https://local.hsappstatic.net/signup-ui-lego-embedder/static/js/embedder.js"></script>
 		<button id="hubspot-connect-button" class="button button-primary">Connect to HubSpot</button>
 		<script>
-			const oauthRedirectUri = `https://3yzhw.csb.app/redirect.html`
+			const oauthRedirectUri = 'https://plugin-example.vercel.app/'
 			document.getElementById('hubspot-connect-button').addEventListener('click', function() {
 				new SignupEmbedder()
 				.setFlow('integrations')

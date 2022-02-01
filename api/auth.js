@@ -1,8 +1,8 @@
 const axios = require('axios');
 const app = require('express')();
-app.use(require('body-parser').json());
+import axios from 'axios';
 
-app.post('oauth-verify', (req, res) => {
+export default function auth(req, res) {
   const body = {
     grant_type: 'authorization_code',
     client_id: process.env.CLIENT_ID,
@@ -13,4 +13,4 @@ app.post('oauth-verify', (req, res) => {
   axios.post('https://api.hubapi.com/oauth/v1/token', body).then((response) => {
     res.json(response.data);
   });
-});
+}
