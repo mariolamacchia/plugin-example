@@ -5,6 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.25.0",
-    "expressjs": "^1.0.1"
+    "express": "^4.17.2"
   }
 }
