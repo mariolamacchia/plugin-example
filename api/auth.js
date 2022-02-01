@@ -19,8 +19,9 @@ export default function auth(req, res) {
       process.env.CLIENT_SECRET
     )
     .then((response) => {
-      res.json(response.body);
+      response.json();
     })
+    .then((json) => res.json(json))
     .catch((error) => {
       res.status(500).json(error);
     });
