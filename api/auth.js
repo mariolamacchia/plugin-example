@@ -19,10 +19,12 @@ export default function auth(req, res) {
       process.env.CLIENT_SECRET
     )
     .then((response) => {
+      console.log(response);
       response.json();
     })
     .then((json) => res.json(json))
     .catch((error) => {
+      console.log(error);
       res.status(500).json(error);
     });
 }
