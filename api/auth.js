@@ -16,5 +16,8 @@ export default function auth(req, res) {
     })
     .then((response) => {
       res.json(response.data);
+    })
+    .catch((error) => {
+      res.status(error.response.status).json(error.response.data);
     });
 }
