@@ -1,7 +1,5 @@
 const axios = require('axios');
 const app = require('express')();
-const axios = require('axios');
-
 export default function auth(req, res) {
   const body = {
     grant_type: 'authorization_code',
