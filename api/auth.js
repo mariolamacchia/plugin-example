@@ -2,7 +2,7 @@ const hubspot = require('@hubspot/api-client');
 
 export default function auth(req, res) {
   const hubspotClient = new hubspot.Client();
-  return hubspotClient.oauth.defaultApi
+  return hubspotClient.oauth.accessTokensApi
     .createToken(
       'authorization_code',
       req.query.code,
