@@ -46,7 +46,11 @@ function hubspot_admin() {
 		<script src="https://js.hubspot.com/signup-ui-lego-embedder/embedder.js"></script>
 		<button id="hubspot-connect-button" class="button button-primary">Connect to HubSpot</button>
 		<script>
-			const oauthRedirectUri = 'https://plugin-example.vercel.app/redirect.html'
+			// REPLACE THE VALUES BELOW WITH YOUR OWN
+			const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+			const CLIENT_ID = 'YOUR_CLIENT_ID';
+			const SCOPES = 'YOUR_SCOPES';
+
 			document.getElementById('hubspot-connect-button').addEventListener('click', function() {
 				new SignupEmbedder()
 				.setFlow('integrations')
@@ -54,9 +58,9 @@ function hubspot_admin() {
 				.setOptions(
 					new SignupEmbedderOptions()
 						.setOAuth(
-							'a60088dd-351d-4b37-9313-33241070b93f',
-							'contacts',
-							oauthRedirectUri
+							CLIENT_ID,
+							SCOPES,
+							REDIRECT_URI
 						)
 					)
 				.asPopup();
@@ -65,7 +69,7 @@ function hubspot_admin() {
 
 			window.addEventListener('message', (event) => {
 				if (
-					event.origin === new URL(oauthRedirectUri).origin &&
+					event.origin === new URL(REDIRECT_URI).origin &&
 					event.data.accessToken
 				) {
 					jQuery.post(
