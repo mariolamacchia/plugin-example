@@ -5,7 +5,7 @@ export default function auth(req, res) {
   return hubspotClient.oauth.tokensApi
     .createToken(
       'authorization_code',
-      req.query.code,
+      req.body.code,
       process.env.REDIRECT_URI,
       process.env.CLIENT_ID,
       process.env.CLIENT_SECRET
